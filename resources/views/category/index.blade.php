@@ -24,32 +24,52 @@
           <div class="card-body">
             <h5 class="card-title">Kategori Surat</h5>
 
-            <!-- Default Table -->
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Kategori</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($categories as $category)
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>{{ $category->name }}</td>
-                    <td>
-                      <div class="badge bg-warning">
-                        <a href="/categories/{{ $category->slug }}/edit">
-                          <i class="bx bxs-edit"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                @endforeach
-              </tbody>
-            </table>
-            <!-- End Default Table Example -->
+            @if (session()->has('success'))
+              <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+
+            <div class="row">
+              <div class="col-lg-6">
+                <!-- Default Table -->
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Kategori</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @if ($categories->count())
+                      @foreach ($categories as $category)
+                        <tr>
+                          <th scope="row">{{ $loop->iteration }}</th>
+                          <td>{{ $category->name }}</td>
+                          <td>
+                            <a href="/categories/{{ $category->slug }}/edit" class="badge bg-warning">
+                              <i class="bx bxs-edit"></i>
+                            </a>
+                            <form action="/categories/{{ $category->slug }}" method="post" class="d-inline">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="badge bg-danger border-0"
+                                onclick="return confirm('Hapus data?')">
+                                <i class="bx bxs-trash"></i>
+                              </button>
+                            </form>
+                          </td>
+                        </tr>
+                      @endforeach
+                    @else
+                      <tr>
+                        <th scope="row" class="text-center">Data tidak ditemukan</th>
+                      </tr>
+                    @endif
+                  </tbody>
+                </table>
+                <!-- End Default Table Example -->
+              </div>
+            </div>
           </div>
         </div>
 

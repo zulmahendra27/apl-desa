@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Http\Requests\StoreCategoryRequest;
-use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CategoryController extends Controller
@@ -37,13 +37,13 @@ class CategoryController extends Controller
      * @param  \App\Http\Requests\StoreCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(Request $request)
     {
-        $validated = $request->validated();
+        $validated = $request->validate([
+            'name' => 'required'
+        ]);
 
         $validated['slug'] = SlugService::createSlug(Category::class, 'slug', $request->name);
-
-        // ddd($validated);
 
         Category::create($validated);
 
@@ -69,7 +69,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -79,9 +81,22 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(Request $request, Category $category)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required'
+        ]);
+
+        $slug = Str::of($request->name)->slug('-');
+
+        if ($slug != $category->slug) {
+            $validated['slug'] = SlugService::createSlug(Category::class, 'slug', $request->name);
+        }
+
+        Category::where('id', $category->id)
+            ->update($validated);
+
+        return redirect('categories')->with('success', 'Data berhasil diedit.');
     }
 
     /**
@@ -92,6 +107,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+
+        return redirect('categories')->with('success', 'Data berhasil dihapus');
     }
 }
