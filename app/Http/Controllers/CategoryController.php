@@ -17,6 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('category.index', [
+            'title' => 'Kategori Surat',
             'categories' => Category::all()
         ]);
     }
@@ -28,7 +29,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        return view('category.create', [
+            'title' => 'Tambah Data'
+        ]);
     }
 
     /**
@@ -70,6 +73,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         return view('category.edit', [
+            'title' => 'Edit Data',
             'category' => $category
         ]);
     }

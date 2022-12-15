@@ -17,6 +17,16 @@ class Category extends Model
         return 'slug';
     }
 
+    public function outletter()
+    {
+        return $this->hasMany(Outletter::class);
+    }
+
+    public function inletter()
+    {
+        return $this->hasMany(Inletter::class);
+    }
+
     public function sluggable(): array
     {
         return [

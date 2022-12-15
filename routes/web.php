@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\InletterController;
+use App\Http\Controllers\OutletterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +26,5 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 Route::resource('/categories', CategoryController::class)->except(['show'])->middleware('auth');
+Route::resource('/outletters', OutletterController::class)->except(['show'])->middleware('auth');
+Route::resource('/inletters', InletterController::class)->except(['show'])->middleware('auth');

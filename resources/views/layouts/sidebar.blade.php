@@ -22,13 +22,13 @@
           </a>
         </li>
         <li>
-          <a href="components-accordion.html">
-            <i class="bi bi-circle"></i><span>Accordion</span>
+          <a href="/inletters" class="{{ request()->is('inletters*') ? 'active' : '' }}">
+            <i class="bi bi-circle"></i><span>Surat Masuk</span>
           </a>
         </li>
         <li>
-          <a href="components-badges.html">
-            <i class="bi bi-circle"></i><span>Badges</span>
+          <a href="/outletters" class="{{ request()->is('outletters*') ? 'active' : '' }}">
+            <i class="bi bi-circle"></i><span>Surat Keluar</span>
           </a>
         </li>
         <li>

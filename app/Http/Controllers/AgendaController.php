@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Agenda;
+use App\Http\Requests\StoreAgendaRequest;
+use App\Http\Requests\UpdateAgendaRequest;
 
-class LetterController extends Controller
+class AgendaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,10 +31,10 @@ class LetterController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreAgendaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAgendaRequest $request)
     {
         //
     }
@@ -40,10 +42,10 @@ class LetterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Agenda $agenda)
     {
         //
     }
@@ -51,10 +53,10 @@ class LetterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Agenda $agenda)
     {
         //
     }
@@ -62,11 +64,11 @@ class LetterController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateAgendaRequest  $request
+     * @param  \App\Models\Agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAgendaRequest $request, Agenda $agenda)
     {
         //
     }
@@ -74,10 +76,10 @@ class LetterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Agenda $agenda)
     {
         //
     }
