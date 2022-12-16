@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('random_id')->unique();
             $table->string('name');
-
+            $table->string('tempat');
+            $table->timestamp('waktu');
             $table->timestamps();
         });
     }

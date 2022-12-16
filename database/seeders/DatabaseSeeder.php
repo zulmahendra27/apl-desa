@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +29,16 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'username' => 'admin',
             'password' => Hash::make('password')
+        ]);
+
+        Category::create([
+            'name' => 'Undangan',
+            'slug' => 'undangan'
+        ]);
+
+        Category::create([
+            'name' => 'Perintah',
+            'slug' => 'perintah'
         ]);
     }
 }

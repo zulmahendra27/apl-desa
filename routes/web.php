@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InletterController;
 use App\Http\Controllers\OutletterController;
@@ -17,14 +18,19 @@ use App\Http\Controllers\OutletterController;
 |
 */
 
+Route::get('/', function () {
+    return view('test');
+});
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard.index');
+    return view('dashboard.index', ['title' => 'Dashboard']);
 })->middleware('auth');
 
 Route::resource('/categories', CategoryController::class)->except(['show'])->middleware('auth');
 Route::resource('/outletters', OutletterController::class)->except(['show'])->middleware('auth');
 Route::resource('/inletters', InletterController::class)->except(['show'])->middleware('auth');
+Route::resource('/agenda', AgendaController::class)->except(['show'])->middleware('auth');

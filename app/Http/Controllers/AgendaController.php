@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
-use App\Http\Requests\StoreAgendaRequest;
-use App\Http\Requests\UpdateAgendaRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AgendaController extends Controller
 {
@@ -15,7 +15,10 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        //
+        return view('agenda.index', [
+            'title' => 'Agenda',
+            'agendas' => Agenda::latest()->get()
+        ]);
     }
 
     /**
@@ -25,7 +28,9 @@ class AgendaController extends Controller
      */
     public function create()
     {
-        //
+        return view('agenda.create', [
+            'title' => 'Tambah Data'
+        ]);
     }
 
     /**
@@ -34,9 +39,20 @@ class AgendaController extends Controller
      * @param  \App\Http\Requests\StoreAgendaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAgendaRequest $request)
+    public function store(Request $request)
     {
-        //
+        // dd($request->waktu->format('Y-m-d H:i:s'));
+        $validated = $request->validate([
+            'name' => 'required',
+            'tempat' => 'required',
+            'waktu' => 'required|date'
+        ]);
+
+        $validated['random_id'] = Str::random(35);
+
+        Agenda::create($validated);
+
+        return redirect('agenda')->with('success', 'Agenda berhasil ditambah');
     }
 
     /**
@@ -58,7 +74,10 @@ class AgendaController extends Controller
      */
     public function edit(Agenda $agenda)
     {
-        //
+        return view('agenda.edit', [
+            'title' => 'Edit Data',
+            'agenda' => $agenda
+        ]);
     }
 
     /**
@@ -68,7 +87,7 @@ class AgendaController extends Controller
      * @param  \App\Models\Agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAgendaRequest $request, Agenda $agenda)
+    public function update(Request $request, Agenda $agenda)
     {
         //
     }
