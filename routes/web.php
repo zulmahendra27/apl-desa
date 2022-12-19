@@ -6,6 +6,7 @@ use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InletterController;
 use App\Http\Controllers\OutletterController;
+use App\Models\Agenda;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,15 @@ use App\Http\Controllers\OutletterController;
 */
 
 Route::get('/', function () {
-    return view('test');
+    return view('test', [
+        'agenda' => Agenda::latest()->get()
+    ]);
+
+    // return json_encode(Agenda::latest()->get());
+});
+
+Route::get('/getAgenda', function () {
+    return json_encode(Agenda::latest()->get());
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
