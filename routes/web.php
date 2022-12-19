@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\AgendaController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\InletterController;
-use App\Http\Controllers\OutletterController;
+use App\Http\Controllers\AdminAgendaController;
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminInletterController;
+use App\Http\Controllers\AdminOutletterController;
 use App\Models\Agenda;
 
 /*
@@ -20,11 +20,18 @@ use App\Models\Agenda;
 */
 
 Route::get('/', function () {
-    return view('test', [
-        'agenda' => Agenda::latest()->get()
+    return view('front.dashboard.index', [
+        // 'agenda' => Agenda::latest()->get()
+        'title' => 'Dashboard',
+        'description' => 'Selamat datang di web Desa'
     ]);
+});
 
-    // return json_encode(Agenda::latest()->get());
+Route::get('agenda', function () {
+    return view('front.agenda.index', [
+        'title' => 'Agenda Desa',
+        'description' => 'Setiap kegiatan desa akan terangkum pada kalender'
+    ]);
 });
 
 Route::get('/getAgenda', function () {
@@ -36,10 +43,10 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard.index', ['title' => 'Dashboard']);
+    return view('admin.dashboard.index', ['title' => 'Dashboard']);
 })->middleware('auth');
 
-Route::resource('/categories', CategoryController::class)->except(['show'])->middleware('auth');
-Route::resource('/outletters', OutletterController::class)->except(['show'])->middleware('auth');
-Route::resource('/inletters', InletterController::class)->except(['show'])->middleware('auth');
-Route::resource('/agenda', AgendaController::class)->except(['show'])->middleware('auth');
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except(['show'])->middleware('auth');
+Route::resource('/dashboard/outletters', AdminOutletterController::class)->except(['show'])->middleware('auth');
+Route::resource('/dashboard/inletters', AdminInletterController::class)->except(['show'])->middleware('auth');
+Route::resource('/dashboard/agenda', AdminAgendaController::class)->except(['show'])->middleware('auth');
