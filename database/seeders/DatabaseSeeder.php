@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Agenda;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -39,6 +40,20 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'name' => 'Perintah',
             'slug' => 'perintah'
+        ]);
+
+        Agenda::create([
+            'random_id' => 'y98ajsknuUHuhwsdoIOhs9-',
+            'name' => 'Undangan Rapat',
+            'tempat' => 'Gedung Serbaguna',
+            'waktu' => '2022-12-27 09:00:00'
+        ]);
+
+        Agenda::create([
+            'random_id' => 'jnKLAHJh9Hujksd8oUOH8u70J-1',
+            'name' => 'Gotong Royong',
+            'tempat' => 'Kantor Desa',
+            'waktu' => '2022-12-25 07:30:00'
         ]);
     }
 }
