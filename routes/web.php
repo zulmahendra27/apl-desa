@@ -1,12 +1,13 @@
 <?php
 
+use App\Models\Agenda;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminAgendaController;
+use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminInletterController;
 use App\Http\Controllers\AdminOutletterController;
-use App\Models\Agenda;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,9 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard.index', ['title' => 'Dashboard']);
 })->middleware('auth');
 
+Route::get('/dashboard/profile/checkKey', [AdminProfileController::class, 'checkKey'])->middleware('auth');
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except(['show'])->middleware('auth');
 Route::resource('/dashboard/outletters', AdminOutletterController::class)->except(['show'])->middleware('auth');
 Route::resource('/dashboard/inletters', AdminInletterController::class)->except(['show'])->middleware('auth');
 Route::resource('/dashboard/agenda', AdminAgendaController::class)->except(['show'])->middleware('auth');
+Route::resource('/dashboard/profile', AdminProfileController::class)->except(['show'])->middleware('auth');

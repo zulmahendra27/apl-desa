@@ -31,6 +31,17 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('') }}admin/assets/css/style.css" rel="stylesheet">
 
+  @if (request()->is('dashboard/profile*'))
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+
+    <style>
+      trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
+      }
+    </style>
+  @endif
+
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
