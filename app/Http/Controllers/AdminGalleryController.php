@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class GalleryController extends Controller
+class AdminGalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,10 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.gallery.index', [
+            'title' => 'Gallery Kegiatan',
+            'galleries' => Gallery::latest()->get()
+        ]);
     }
 
     /**
@@ -24,7 +29,9 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.gallery.create', [
+            'title' => 'Tambah Galeri Kegiatan'
+        ]);
     }
 
     /**
@@ -35,7 +42,17 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'description' => 'required',
+            'image' => 'required|image|file|max:1024'
+        ]);
+
+        $validated['random_id'] = Str::random(40);
+        $validated['image'] = $request->file('image')->store('galleries');
+
+        Gallery::create($validated);
+
+        return redirect('/dashboard/galleries')->with('success', 'Data Kegiatan Berhasil Ditambahkan');
     }
 
     /**
@@ -80,6 +97,11 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-        //
+        if ($gallery->image) {
+            Storage::delete($gallery->image);
+        }
+
+        Gallery::destroy($gallery->id);
+        return redirect('/dashboard/galleries')->with('success', 'Foto Kegiatan Berhasil Dihapus');
     }
 }

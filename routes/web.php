@@ -4,6 +4,7 @@ use App\Models\Agenda;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminAgendaController;
+use App\Http\Controllers\AdminGalleryController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminInletterController;
@@ -53,3 +54,4 @@ Route::resource('/dashboard/outletters', AdminOutletterController::class)->excep
 Route::resource('/dashboard/inletters', AdminInletterController::class)->except(['show'])->middleware('auth');
 Route::resource('/dashboard/agenda', AdminAgendaController::class)->except(['show'])->middleware('auth');
 Route::resource('/dashboard/profile', AdminProfileController::class)->except(['show'])->middleware('auth');
+Route::resource('/dashboard/galleries', AdminGalleryController::class)->except(['show'])->middleware('auth');
