@@ -1,14 +1,6 @@
 @extends('admin.layouts.template')
 
 @section('container')
-  <style>
-    .image {
-      max-height: 300px;
-      object-fit: cover;
-      object-position: center;
-    }
-  </style>
-
   <div class="pagetitle">
     <h1>{{ $title }}</h1>
     <nav>

@@ -3,6 +3,7 @@
 use App\Models\Agenda;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\AdminAgendaController;
 use App\Http\Controllers\AdminGalleryController;
 use App\Http\Controllers\AdminProfileController;
@@ -29,12 +30,13 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('agenda', function () {
+Route::get('/agenda', function () {
     return view('front.agenda.index', [
         'title' => 'Agenda Desa',
         'description' => 'Setiap kegiatan desa akan terangkum pada kalender'
     ]);
 });
+Route::get('/galleries', [GalleryController::class, 'index']);
 
 Route::get('/getAgenda', function () {
     return json_encode(Agenda::latest()->get());
@@ -54,4 +56,4 @@ Route::resource('/dashboard/outletters', AdminOutletterController::class)->excep
 Route::resource('/dashboard/inletters', AdminInletterController::class)->except(['show'])->middleware('auth');
 Route::resource('/dashboard/agenda', AdminAgendaController::class)->except(['show'])->middleware('auth');
 Route::resource('/dashboard/profile', AdminProfileController::class)->except(['show'])->middleware('auth');
-Route::resource('/dashboard/galleries', AdminGalleryController::class)->except(['show'])->middleware('auth');
+Route::resource('/dashboard/galleries', AdminGalleryController::class)->except(['show', 'edit', 'update'])->middleware('auth');

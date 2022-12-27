@@ -2,6 +2,7 @@
   <ul>
     <li><a class="{{ request()->is('/') ? 'active' : '' }}" href="/">Home</a></li>
     <li><a class="{{ request()->is('agenda') ? 'active' : '' }}" href="/agenda">Agenda</a></li>
+    <li><a class="{{ request()->is('galleries') ? 'active' : '' }}" href="/galleries">Galeri</a></li>
     <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
       <ul>
         <li><a href="#">Drop Down 1</a></li>

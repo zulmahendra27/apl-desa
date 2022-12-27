@@ -34,12 +34,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
       rel="stylesheet">
-    <style>
-      #calendar {
-        font-family: 'Source Sans Pro', sans-serif;
-      }
-    </style>
   @endif
+
+  <style>
+    #calendar {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    .image {
+      max-height: 300px;
+      object-fit: cover;
+      object-position: center;
+    }
+  </style>
 
   <!-- =======================================================
   * Template Name: SoftLand - v4.9.1
