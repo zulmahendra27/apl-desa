@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Inletter;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminInletterController extends Controller
 {
@@ -48,10 +49,14 @@ class AdminInletterController extends Controller
             'nomor' => 'required',
             'tanggal' => 'required|date',
             'perihal' => 'required',
-            'pengirim' => 'required'
+            'pengirim' => 'required',
+            'file' => 'required|file|max:1024|mimes:pdf,docx,doc,jpg,png'
+        ], [
+            'file.mimes' => 'File must be a pdf, docx, doc, jpg or png file',
         ]);
 
         $validated['random_id'] = Str::random(40);
+        $validated['file'] = $request->file('file')->store('inletters');
 
         Inletter::create($validated);
 
@@ -98,10 +103,20 @@ class AdminInletterController extends Controller
             'nomor' => 'required',
             'tanggal' => 'required|date',
             'perihal' => 'required',
-            'pengirim' => 'required'
+            'pengirim' => 'required',
+            'file' => 'file|max:1024|mimes:pdf,docx,doc,jpg,png'
+        ], [
+            'file.mimes' => 'File must be a pdf, docx, doc, jpg or png file',
         ]);
 
         // $validated['random_id'] = Str::random(40);
+        if ($request->file('file')) {
+            if ($request->old_file) {
+                Storage::delete($request->old_file);
+            }
+
+            $validated['file'] = $request->file('file')->store('inletters');
+        }
 
         Inletter::where('id', $inletter->id)
             ->update($validated);
@@ -117,6 +132,10 @@ class AdminInletterController extends Controller
      */
     public function destroy(Inletter $inletter)
     {
+        if ($inletter->file) {
+            Storage::delete($inletter->file);
+        }
+
         Inletter::destroy($inletter->id);
 
         return redirect('/dashboard/inletters')->with('success', 'Data berhasil dihapus');

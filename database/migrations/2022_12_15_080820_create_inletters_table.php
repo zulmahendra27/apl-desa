@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->string('perihal');
             $table->string('pengirim');
+            $table->string('file');
             $table->timestamps();
         });
     }

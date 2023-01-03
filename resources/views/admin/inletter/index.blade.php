@@ -54,6 +54,10 @@
                           <td>{{ $inletter->perihal }}</td>
                           <td>{{ $inletter->pengirim }}</td>
                           <td>
+                            <a href="{{ asset('storage/' . $inletter->file) }}" class="badge bg-info" target="_blank"
+                              title="See file">
+                              <i class="bx bxs-show"></i>
+                            </a>
                             <a href="/dashboard/inletters/{{ $inletter->random_id }}/edit" class="badge bg-warning">
                               <i class="bx bxs-edit"></i>
                             </a>

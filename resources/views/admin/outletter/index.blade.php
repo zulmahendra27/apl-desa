@@ -54,6 +54,10 @@
                           <td>{{ $outletter->perihal }}</td>
                           <td>{{ $outletter->tujuan }}</td>
                           <td>
+                            <a href="{{ asset('storage/' . $outletter->file) }}" class="badge bg-info" target="_blank"
+                              title="See file">
+                              <i class="bx bxs-show"></i>
+                            </a>
                             <a href="/dashboard/outletters/{{ $outletter->random_id }}/edit" class="badge bg-warning">
                               <i class="bx bxs-edit"></i>
                             </a>

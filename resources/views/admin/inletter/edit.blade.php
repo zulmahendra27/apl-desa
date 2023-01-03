@@ -24,9 +24,11 @@
                   <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
                 <!-- Vertical Form -->
-                <form class="row g-3" action="/dashboard/inletters/{{ $inletter->random_id }}" method="post">
+                <form class="row g-3" action="/dashboard/inletters/{{ $inletter->random_id }}" method="post"
+                  enctype="multipart/form-data">
                   @csrf
                   @method('put')
+                  <input type="hidden" name="old_file" value="{{ $inletter->file }}">
                   <div class="col-12">
                     <label for="category_id" class="form-label">Jenis Surat</label>
                     <select name="category_id" id="category_id"
@@ -72,6 +74,14 @@
                       class="form-control @error('pengirim') is-invalid @enderror"
                       value="{{ old('pengirim', $inletter->pengirim) }}">
                     @error('pengirim')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
+                  <div class="col-12">
+                    <label for="file" class="form-label">File Surat</label>
+                    <input type="file" class="form-control @error('file') is-invalid @enderror" id="file"
+                      name="file">
+                    @error('file')
                       <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                   </div>

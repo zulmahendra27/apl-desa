@@ -24,7 +24,7 @@
                   <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
                 <!-- Vertical Form -->
-                <form class="row g-3" action="/dashboard/outletters" method="post">
+                <form class="row g-3" action="/dashboard/outletters" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="col-12">
                     <label for="category_id" class="form-label">Jenis Surat</label>
@@ -40,7 +40,7 @@
                   </div>
                   <div class="col-12">
                     <label for="nomor" class="form-label">Nomor Surat</label>
-                    <input type="text" name="nomor" id="nomor"
+                    <input type="text" name="nomor" id="nomor" autofocus
                       class="form-control @error('nomor') is-invalid @enderror" value="{{ old('nomor') }}">
                     @error('nomor')
                       <div class="invalid-feedback">{{ $message }}</div>
@@ -67,6 +67,14 @@
                     <input type="text" name="tujuan" id="tujuan"
                       class="form-control @error('tujuan') is-invalid @enderror" value="{{ old('tujuan') }}">
                     @error('tujuan')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
+                  <div class="col-12">
+                    <label for="file" class="form-label">File Surat</label>
+                    <input type="file" class="form-control @error('file') is-invalid @enderror" id="file"
+                      name="file" required>
+                    @error('file')
                       <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                   </div>

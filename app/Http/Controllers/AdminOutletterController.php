@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Outletter;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminOutletterController extends Controller
 {
@@ -48,10 +49,14 @@ class AdminOutletterController extends Controller
             'nomor' => 'required',
             'tanggal' => 'required|date',
             'perihal' => 'required',
-            'tujuan' => 'required'
+            'tujuan' => 'required',
+            'file' => 'required|file|max:1024|mimes:pdf,docx,doc,jpg,png'
+        ], [
+            'file.mimes' => 'File must be a pdf, docx, doc, jpg or png file',
         ]);
 
         $validated['random_id'] = Str::random(40);
+        $validated['file'] = $request->file('file')->store('outletters');
 
         Outletter::create($validated);
 
@@ -98,10 +103,20 @@ class AdminOutletterController extends Controller
             'nomor' => 'required',
             'tanggal' => 'required|date',
             'perihal' => 'required',
-            'tujuan' => 'required'
+            'tujuan' => 'required',
+            'file' => 'file|max:1024|mimes:pdf,docx,doc,jpg,png'
+        ], [
+            'file.mimes' => 'File must be a pdf, docx, doc, jpg or png file',
         ]);
 
         // $validated['random_id'] = Str::random(40);
+        if ($request->file('file')) {
+            if ($request->old_file) {
+                Storage::delete($request->old_file);
+            }
+
+            $validated['file'] = $request->file('file')->store('outletters');
+        }
 
         Outletter::where('id', $outletter->id)
             ->update($validated);
@@ -117,6 +132,10 @@ class AdminOutletterController extends Controller
      */
     public function destroy(Outletter $outletter)
     {
+        if ($outletter->file) {
+            Storage::delete($outletter->file);
+        }
+
         Outletter::destroy($outletter->id);
 
         return redirect('/dashboard/outletters')->with('success', 'Data berhasil dihapus');
