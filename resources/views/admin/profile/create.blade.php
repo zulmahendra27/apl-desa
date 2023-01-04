@@ -70,7 +70,9 @@
     const key = document.getElementById('key')
 
     name.addEventListener('change', function() {
-      fetch('/dashboard/profile/checkKey?name=' + name.value)
+      fetch('/dashboard/profile/checkKey?name=' + name.value, {
+          method: 'GET',
+        })
         .then((response) => response.json())
         .then((data) => key.value = data.key);
     });

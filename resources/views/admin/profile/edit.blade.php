@@ -71,7 +71,9 @@
     const key = document.getElementById('key')
 
     name.addEventListener('blur', function() {
-      fetch('/dashboard/profile/checkKey?name=' + name.value)
+      fetch('/dashboard/profile/checkKey?name=' + name.value, {
+          method: 'GET',
+        })
         .then((response) => response.json())
         .then((data) => key.value = data.key);
     });
