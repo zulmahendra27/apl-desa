@@ -19,9 +19,9 @@
     <div class="row align-items-center">
       <div class="col-12">
         <div class="row justify-content-center">
-          <div class="col-md-7 text-center hero-text">
+          <div class="col-md-8 text-center hero-text">
             <h1 data-aos="fade-up" data-aos-delay="">{{ $title }}</h1>
-            <p class="mb-5" data-aos="fade-up" data-aos-delay="100">{{ $description }}</p>
+            <p class="mb-5" data-aos="fade-up" data-aos-delay="100">{!! $description !!}</p>
           </div>
         </div>
       </div>

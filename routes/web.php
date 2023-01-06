@@ -3,13 +3,13 @@
 use App\Models\Agenda;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\AdminAgendaController;
 use App\Http\Controllers\AdminGalleryController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminInletterController;
 use App\Http\Controllers\AdminOutletterController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,21 +22,11 @@ use App\Http\Controllers\AdminOutletterController;
 |
 */
 
-Route::get('/', function () {
-    return view('front.dashboard.index', [
-        // 'agenda' => Agenda::latest()->get()
-        'title' => 'Dashboard',
-        'description' => 'Selamat datang di web Desa'
-    ]);
-});
-
-Route::get('/agenda', function () {
-    return view('front.agenda.index', [
-        'title' => 'Agenda Desa',
-        'description' => 'Setiap kegiatan desa akan terangkum pada kalender'
-    ]);
-});
-Route::get('/galleries', [GalleryController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index']);
+Route::get('/visi-misi', [DashboardController::class, 'visiMisi']);
+Route::get('/struktur', [DashboardController::class, 'struktur']);
+Route::get('/agenda', [DashboardController::class, 'agenda']);
+Route::get('/galleries', [DashboardController::class, 'galleries']);
 
 Route::get('/getAgenda', function () {
     return json_encode(Agenda::latest()->get());
