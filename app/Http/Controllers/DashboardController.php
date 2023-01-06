@@ -11,7 +11,8 @@ class DashboardController extends Controller
     {
         return view('front.dashboard.index', [
             'title' => 'Desa Geulumpang Sulu Barat',
-            'description' => 'Selamat Datang di Desa Geulumpang Sulu Barat<br>Kecamatan Dewantara Kabupaten Aceh Utara Provinsi Aceh'
+            'description' => 'Selamat Datang di Desa Geulumpang Sulu Barat<br>Kecamatan Dewantara Kabupaten Aceh Utara Provinsi Aceh',
+            'galleries' => Gallery::latest()->limit(6)->get()
         ]);
     }
 

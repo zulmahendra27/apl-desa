@@ -63,7 +63,7 @@
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
-        <h1><a href="/">Desa</a></h1>
+        <h1><a href="/">Desa Geulumpang Sulu Barat</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -100,11 +100,11 @@
   <!-- ======= Footer ======= -->
   <footer class="footer" role="contentinfo">
     <div class="container">
-      <div class="row">
+      <div class="row mb-4">
         <div class="col-md-4 mb-4 mb-md-0">
-          <h3>About SoftLand</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ea delectus pariatur, numquam aperiam
-            dolore nam optio dolorem facilis itaque voluptatum recusandae deleniti minus animi.</p>
+          <h3>Tentang Desa Geulumpang Sulu Barat</h3>
+          <p>Geulumpang Sulu Barat merupakan sebuah gampong yang terletak di kecamatan Dewantara, Kabupaten Aceh Utara,
+            provinsi Aceh, Indonesia.</p>
           <p class="social">
             <a href="#"><span class="bi bi-twitter"></span></a>
             <a href="#"><span class="bi bi-facebook"></span></a>
@@ -117,27 +117,19 @@
             <div class="col-md-4 mb-4 mb-md-0">
               <h3>Navigation</h3>
               <ul class="list-unstyled">
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/struktur">Struktur Desa</a></li>
+                <li><a href="/visi-misi">Visi dan Misi</a></li>
+                <li><a href="/agenda">Agenda</a></li>
+                <li><a href="/galleries">Galeri</a></li>
               </ul>
             </div>
-            <div class="col-md-4 mb-4 mb-md-0">
-              <h3>Services</h3>
-              <ul class="list-unstyled">
-                <li><a href="#">Team</a></li>
-                <li><a href="#">Collaboration</a></li>
-                <li><a href="#">Todos</a></li>
-                <li><a href="#">Events</a></li>
-              </ul>
-            </div>
-            <div class="col-md-4 mb-4 mb-md-0">
-              <h3>Downloads</h3>
-              <ul class="list-unstyled">
-                <li><a href="#">Get from the App Store</a></li>
-                <li><a href="#">Get from the Play Store</a></li>
-              </ul>
+            <div class="col-md-7 mb-4 mb-md-0">
+              <h3>Peta Desa</h3>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7946.156718020575!2d96.98354512674173!3d5.250374218604006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304771407fbdb42f%3A0x57ca8d9076c76c52!2sGeulumpang%20Sulu%20Bar.%2C%20Kec.%20Dewantara%2C%20Kabupaten%20Aceh%20Utara%2C%20Aceh!5e0!3m2!1sid!2sid!4v1673015842307!5m2!1sid!2sid"
+                width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
         </div>
@@ -145,7 +137,8 @@
 
       <div class="row justify-content-center text-center">
         <div class="col-md-7">
-          <p class="copyright">&copy; Copyright SoftLand. All Rights Reserved</p>
+          <p class="copyright">&copy; Copyright <a href="/">Desa Geulumpang Sulu Barat</a>. All Rights Reserved
+          </p>
           <div class="credits">
             <!--
             All the links in the footer should remain intact.
