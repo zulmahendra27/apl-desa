@@ -80,7 +80,7 @@
     @yield('container')
 
     <!-- ======= CTA Section ======= -->
-    <section class="section cta-section">
+    {{-- <section class="section cta-section">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-6 me-auto text-center text-md-start mb-5 mb-md-0">
@@ -93,7 +93,7 @@
           </div>
         </div>
       </div>
-    </section><!-- End CTA Section -->
+    </section><!-- End CTA Section --> --}}
 
   </main><!-- End #main -->
 

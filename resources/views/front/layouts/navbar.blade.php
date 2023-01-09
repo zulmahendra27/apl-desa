@@ -12,6 +12,7 @@
     </li>
     <li><a class="{{ request()->is('agenda') ? 'active' : '' }}" href="/agenda">Agenda</a></li>
     <li><a class="{{ request()->is('galleries') ? 'active' : '' }}" href="/galleries">Galeri</a></li>
+    <li><a href="/login" class="d-block">Login Admin</a></li>
   </ul>
   <i class="bi bi-list mobile-nav-toggle"></i>
   {{-- <p>{{ request() }}</p> --}}
