@@ -9,7 +9,7 @@
           @forelse ($profiles as $profile)
             {!! $profile->content !!}
           @empty
-            <div class="alert alert-warning">Visi dan Misi belum ditambahkan</div>
+            <div class="alert alert-warning">Sejarah belum ditambahkan</div>
           @endforelse
         </div>
       </div>

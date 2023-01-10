@@ -49,14 +49,14 @@
                             <a href="/dashboard/profile/{{ $profile->key }}/edit" class="badge bg-warning">
                               <i class="bx bxs-edit"></i>
                             </a>
-                            <form action="/dashboard/profile/{{ $profile->key }}" method="post" class="d-inline">
+                            {{-- <form action="/dashboard/profile/{{ $profile->key }}" method="post" class="d-inline">
                               @csrf
                               @method('delete')
                               <button type="submit" class="badge bg-danger border-0"
                                 onclick="return confirm('Hapus data?')">
                                 <i class="bx bxs-trash"></i>
                               </button>
-                            </form>
+                            </form> --}}
                           </td>
                         </tr>
                       @endforeach

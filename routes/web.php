@@ -23,6 +23,7 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', [DashboardController::class, 'index']);
+Route::get('/sejarah', [DashboardController::class, 'sejarah']);
 Route::get('/visi-misi', [DashboardController::class, 'visiMisi']);
 Route::get('/struktur', [DashboardController::class, 'struktur']);
 Route::get('/agenda', [DashboardController::class, 'agenda']);
@@ -45,5 +46,5 @@ Route::resource('/dashboard/categories', AdminCategoryController::class)->except
 Route::resource('/dashboard/outletters', AdminOutletterController::class)->except(['show'])->middleware('auth');
 Route::resource('/dashboard/inletters', AdminInletterController::class)->except(['show'])->middleware('auth');
 Route::resource('/dashboard/agenda', AdminAgendaController::class)->except(['show'])->middleware('auth');
-Route::resource('/dashboard/profile', AdminProfileController::class)->except(['show'])->middleware('auth');
+Route::resource('/dashboard/profile', AdminProfileController::class)->except(['show', 'destroy'])->middleware('auth');
 Route::resource('/dashboard/galleries', AdminGalleryController::class)->except(['show', 'edit', 'update'])->middleware('auth');

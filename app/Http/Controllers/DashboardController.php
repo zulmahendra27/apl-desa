@@ -3,16 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    private function profile($where)
+    {
+        return Profile::where($where)->get();
+    }
+
     public function index()
     {
         return view('front.dashboard.index', [
             'title' => 'Desa Geulumpang Sulu Barat',
             'description' => 'Selamat Datang di Desa Geulumpang Sulu Barat<br>Kecamatan Dewantara Kabupaten Aceh Utara Provinsi Aceh',
             'galleries' => Gallery::latest()->limit(6)->get()
+        ]);
+    }
+
+    public function sejarah()
+    {
+        return view('front.sejarah.index', [
+            'title' => 'Sejarah Desa',
+            'description' => '',
+            'profiles' => $this->profile(['key' => 'sejarah'])
         ]);
     }
 
@@ -28,7 +43,8 @@ class DashboardController extends Controller
     {
         return view('front.visi-misi.index', [
             'title' => 'Visi dan Misi',
-            'description' => ''
+            'description' => '',
+            'profiles' => $this->profile(['key' => 'visi-dan-misi'])
         ]);
     }
 

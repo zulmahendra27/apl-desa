@@ -6,6 +6,7 @@
         <span>Profil</span> <i class="bi bi-chevron-down"></i>
       </a>
       <ul>
+        <li><a href="/sejarah">Sejarah</a></li>
         <li><a href="/struktur">Struktur Desa</a></li>
         <li><a href="/visi-misi">Visi Misi</a></li>
       </ul>
