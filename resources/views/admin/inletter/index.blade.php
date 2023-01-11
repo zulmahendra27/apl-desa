@@ -34,12 +34,12 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
+                      <th scope="col">No</th>
                       <th scope="col">Jenis</th>
                       <th scope="col">Nomor</th>
+                      <th scope="col">Pengirim</th>
                       <th scope="col">Tanggal</th>
                       <th scope="col">Perihal</th>
-                      <th scope="col">Tujuan</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -50,13 +50,13 @@
                           <th scope="row">{{ $loop->iteration }}</th>
                           <td>{{ $inletter->category->name }}</td>
                           <td>{{ $inletter->nomor }}</td>
+                          <td>{{ $inletter->pengirim }}</td>
                           <td>{{ $inletter->tanggal->format('d-m-Y') }}</td>
                           <td>{{ $inletter->perihal }}</td>
-                          <td>{{ $inletter->pengirim }}</td>
                           <td>
                             <a href="{{ asset('storage/' . $inletter->file) }}" class="badge bg-info" target="_blank"
-                              title="See file">
-                              <i class="bx bxs-show"></i>
+                              title="Download file">
+                              <i class="bx bxs-download"></i>
                             </a>
                             <a href="/dashboard/inletters/{{ $inletter->random_id }}/edit" class="badge bg-warning">
                               <i class="bx bxs-edit"></i>

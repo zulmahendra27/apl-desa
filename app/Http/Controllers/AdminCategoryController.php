@@ -18,8 +18,10 @@ class AdminCategoryController extends Controller
     {
         return view('admin.category.index', [
             'title' => 'Kategori Surat',
-            'categories' => Category::all()
+            'categories' => Category::withCount(['inletter', 'outletter'])->get()
         ]);
+
+        // return Category::withCount(['inletter', 'outletter'])->get();
     }
 
     /**

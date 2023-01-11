@@ -9,12 +9,12 @@
       </a>
     </li><!-- End Dashboard Nav -->
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link {{ request()->is('dashboard/profile*') ? '' : 'collapsed' }}" href="/dashboard/profile">
         <i class="bx bx-user-pin"></i>
         <span>Profil Desa</span>
       </a>
-    </li><!-- End Profile Nav -->
+    </li><!-- End Profile Nav --> --}}
 
     <li class="nav-item ">
       <a class="nav-link {{ !request()->is(['dashboard', 'dashboard/agenda*', 'dashboard/profile*', 'dashboard/galleries*']) ? '' : 'collapsed' }}"

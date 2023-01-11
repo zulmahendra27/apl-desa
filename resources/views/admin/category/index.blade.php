@@ -31,12 +31,17 @@
             <div class="row">
               <div class="col-lg-6">
                 <!-- Default Table -->
-                <table class="table">
-                  <thead>
+                <table class="table border text-center">
+                  <thead class="align-middle">
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Kategori</th>
-                      <th scope="col">Action</th>
+                      <th scope="col" rowspan="2">No</th>
+                      <th scope="col" rowspan="2">Kategori
+                      </th>
+                      <th scope="col" colspan="2">Jumlah</th>
+                    </tr>
+                    <tr>
+                      <th scope="col">Surat Masuk</th>
+                      <th scope="col">Surat Keluar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -44,8 +49,10 @@
                       @foreach ($categories as $category)
                         <tr>
                           <th scope="row">{{ $loop->iteration }}</th>
-                          <td>{{ $category->name }}</td>
-                          <td>
+                          <th>{{ $category->name }}</th>
+                          <th>{{ $category->inletter_count }}</th>
+                          <th>{{ $category->outletter_count }}</th>
+                          {{-- <td>
                             <a href="/dashboard/categories/{{ $category->slug }}/edit" class="badge bg-warning">
                               <i class="bx bxs-edit"></i>
                             </a>
@@ -57,7 +64,7 @@
                                 <i class="bx bxs-trash"></i>
                               </button>
                             </form>
-                          </td>
+                          </td> --}}
                         </tr>
                       @endforeach
                     @else

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agenda;
 use App\Models\Gallery;
+use App\Models\Inletter;
+use App\Models\Outletter;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
@@ -62,6 +65,17 @@ class DashboardController extends Controller
             'title' => 'Galeri Desa',
             'description' => 'Gambar Menyangkut Desa dan Masyarakat Desa Geulumpang Sulu Barat<br>Kecamatan Dewantara Kabupaten Aceh Utara Provinsi Aceh',
             'galleries' => Gallery::latest()->get()
+        ]);
+    }
+
+    public function adminDashboard()
+    {
+        return view('admin.dashboard.index', [
+            'title' => 'Dashboard',
+            'inletter_count' => Inletter::count(),
+            'outletter_count' => Outletter::count(),
+            'agenda_count' => Agenda::count(),
+            'gallery_count' => Gallery::count()
         ]);
     }
 }

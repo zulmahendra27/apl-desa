@@ -34,12 +34,12 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
+                      <th scope="col">No</th>
                       <th scope="col">Jenis</th>
                       <th scope="col">Nomor</th>
+                      <th scope="col">Tujuan</th>
                       <th scope="col">Tanggal</th>
                       <th scope="col">Perihal</th>
-                      <th scope="col">Tujuan</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -50,13 +50,13 @@
                           <th scope="row">{{ $loop->iteration }}</th>
                           <td>{{ $outletter->category->name }}</td>
                           <td>{{ $outletter->nomor }}</td>
+                          <td>{{ $outletter->tujuan }}</td>
                           <td>{{ $outletter->tanggal->format('d-m-Y') }}</td>
                           <td>{{ $outletter->perihal }}</td>
-                          <td>{{ $outletter->tujuan }}</td>
                           <td>
                             <a href="{{ asset('storage/' . $outletter->file) }}" class="badge bg-info" target="_blank"
-                              title="See file">
-                              <i class="bx bxs-show"></i>
+                              title="Download file">
+                              <i class="bx bxs-download"></i>
                             </a>
                             <a href="/dashboard/outletters/{{ $outletter->random_id }}/edit" class="badge bg-warning">
                               <i class="bx bxs-edit"></i>

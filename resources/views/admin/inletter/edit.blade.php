@@ -51,6 +51,15 @@
                     @enderror
                   </div>
                   <div class="col-12">
+                    <label for="pengirim" class="form-label">Pengirim</label>
+                    <input type="text" name="pengirim" id="pengirim"
+                      class="form-control @error('pengirim') is-invalid @enderror"
+                      value="{{ old('pengirim', $inletter->pengirim) }}">
+                    @error('pengirim')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
+                  <div class="col-12">
                     <label for="tanggal" class="form-label">Tanggal Surat</label>
                     <input type="date" name="tanggal" id="tanggal"
                       class="form-control @error('tanggal') is-invalid @enderror"
@@ -65,15 +74,6 @@
                       class="form-control @error('perihal') is-invalid @enderror"
                       value="{{ old('perihal', $inletter->perihal) }}">
                     @error('perihal')
-                      <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                  </div>
-                  <div class="col-12">
-                    <label for="pengirim" class="form-label">Pengirim</label>
-                    <input type="text" name="pengirim" id="pengirim"
-                      class="form-control @error('pengirim') is-invalid @enderror"
-                      value="{{ old('pengirim', $inletter->pengirim) }}">
-                    @error('pengirim')
                       <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                   </div>
