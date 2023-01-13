@@ -45,7 +45,7 @@
                   <img class="img-preview img-fluid">
                   <div>
                     <button type="submit" class="btn btn-primary"><i class="bx bx-save"></i> Simpan</button>
-                    <a href="/dashboard/galleries" class="btn btn-warning"><i class="bx bx-left-arrow"></i> Kembali</a>
+                    {{-- <a href="/dashboard/galleries" class="btn btn-warning"><i class="bx bx-left-arrow"></i> Kembali</a> --}}
                   </div>
                 </form><!-- Vertical Form -->
               </div>
